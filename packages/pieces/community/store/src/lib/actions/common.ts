@@ -25,8 +25,7 @@ type Params = {
 
 export const common = {
     store_scope: Property.StaticDropdown({
-        displayName: 'Store Scope',
-        description: 'The storage scope of the value.',
+        displayName: 'Scope',
         required: true,
         options: {
             options: [

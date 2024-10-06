@@ -58,7 +58,7 @@ export class Validators {
         if (isEmpty(processedValue)) return null;
 
         const isValid = processedValue.length <= max;
-        
+
         if (!isValid) {
           return formatErrorMessage(ErrorMessages.MAX_LENGTH, {
             userInput,
@@ -365,9 +365,7 @@ export class Validators {
     };
   }
 
-  static requireKeys(
-    values: string[]
-  ): TypedValidatorFn<ValidationInputType.OBJECT> {
+  static requireKeys(values: string[]): TypedValidatorFn<ValidationInputType.OBJECT> {
     return {
       type: ValidationInputType.OBJECT,
       fn: (property, processedValue, userInput) => {
@@ -383,5 +381,17 @@ export class Validators {
         return null;
       },
     };
+  }
+
+  static maxKeyLength(max: number): TypedValidatorFn<ValidationInputType.OBJECT> {
+    return {
+      type: ValidationInputType.OBJECT,
+      fn: (property, processedValue, userInput) => {
+        const tooLongKeys = Object.keys(processedValue).filter(key => key.length > max);
+        return tooLongKeys.length
+          ? formatErrorMessage(ErrorMessages.MAX_KEY_LENGTH, { userInput, keys: tooLongKeys })
+          : null;
+      }
+    }
   }
 }

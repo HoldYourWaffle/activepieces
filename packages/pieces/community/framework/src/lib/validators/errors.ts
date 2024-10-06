@@ -20,6 +20,7 @@ export enum ErrorMessages {
   IMAGE = 'The {property} value must be an image',
   ONE_OF = 'The {userInput} is not a valid value, valid choices are: {choices}',
   REQUIRE_KEYS = 'The following keys are required: {keys}',
+  MAX_KEY_LENGTH = 'The following keys are too long: {keys}',
   SIZE = 'The {property} size must be less than 0:{size}KB',
   NON_ZERO = 'The value: {userInput} must be a non-zero value',
   PHONE_NUMBER = 'The phone number entered is not a valid phone number',
